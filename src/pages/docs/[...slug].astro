@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import DocsLayout from '../../layouts/DocsLayout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+
+  // Sort all docs globally for prev/next navigation
+  const sorted = docs.sort((a, b) => {
+    const categoryOrder = ['getting-started', 'concept', 'commands', 'faq'];
+    const catA = categoryOrder.indexOf(a.data.category);
+    const catB = categoryOrder.indexOf(b.data.category);
+    if (catA !== catB) return catA - catB;
+    return a.data.sidebar.order - b.data.sidebar.order;
+  });
+
+  return sorted.map((entry, index) => {
+    const prev = index > 0 ? sorted[index - 1] : undefined;
+    const next = index < sorted.length - 1 ? sorted[index + 1] : undefined;
+    return {
+      params: { slug: entry.id },
+      props: {
+        entry,
+        prev: prev ? { title: prev.data.sidebar.label ?? prev.data.title, href: `/docs/${prev.id}` } : undefined,
+        next: next ? { title: next.data.sidebar.label ?? next.data.title, href: `/docs/${next.id}` } : undefined,
+      },
+    };
+  });
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content, headings } = await render(entry);
+---
+
+<DocsLayout entry={entry} headings={headings} prev={prev} next={next}>
+  <Content />
+</DocsLayout>

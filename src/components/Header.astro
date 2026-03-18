@@ -1,0 +1,86 @@
+---
+const navLinks = [
+  { label: 'Docs', href: '/docs' },
+  { label: 'GitHub', href: 'https://github.com/filozofer/git-shadow', external: true },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <span class="logo-text">git-shadow</span>
+    </a>
+    <nav class="header-nav" aria-label="Main navigation">
+      {navLinks.map(({ label, href, external }) => (
+        <a
+          href={href}
+          class:list={['header-link', { active: currentPath.startsWith(href) && href !== '/' }]}
+          target={external ? '_blank' : undefined}
+          rel={external ? 'noopener noreferrer' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    text-decoration: none;
+  }
+
+  .logo-text {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .header-link {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .header-link:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+    text-decoration: none;
+  }
+
+  .header-link.active {
+    color: var(--color-text);
+  }
+</style>

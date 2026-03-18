@@ -1,0 +1,25 @@
+---
+interface Props {
+  prev?: { title: string; href: string };
+  next?: { title: string; href: string };
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+  <nav class="docs-pagination" aria-label="Page navigation">
+    {prev ? (
+      <a href={prev.href} class="pagination-prev">
+        <span class="pagination-dir">← Previous</span>
+        <span class="pagination-title">{prev.title}</span>
+      </a>
+    ) : <div />}
+    {next ? (
+      <a href={next.href} class="pagination-next">
+        <span class="pagination-dir">Next →</span>
+        <span class="pagination-title">{next.title}</span>
+      </a>
+    ) : <div />}
+  </nav>
+)}

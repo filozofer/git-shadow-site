@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+
+const allDocs = await getCollection('docs');
+
+// Group and sort docs by category then order
+const categories = [
+  { key: 'getting-started', label: 'Getting Started' },
+  { key: 'concept', label: 'Concept' },
+  { key: 'commands', label: 'Commands' },
+  { key: 'faq', label: 'FAQ' },
+] as const;
+
+const grouped = categories.map(({ key, label }) => ({
+  label,
+  items: allDocs
+    .filter((doc) => doc.data.category === key)
+    .sort((a, b) => a.data.sidebar.order - b.data.sidebar.order)
+    .map((doc) => ({
+      title: doc.data.sidebar.label ?? doc.data.title,
+      href: `/docs/${doc.id}`,
+      active: doc.id === currentSlug,
+    })),
+}));
+---
+
+<nav class="docs-sidebar" aria-label="Documentation navigation">
+  <a href="/" class="sidebar-logo">git-shadow</a>
+  {grouped.map(({ label, items }) => items.length > 0 && (
+    <div class="sidebar-group">
+      <span class="sidebar-group-label">{label}</span>
+      <ul>
+        {items.map(({ title, href, active }) => (
+          <li>
+            <a href={href} class:list={['sidebar-link', { active }]}>{title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</nav>

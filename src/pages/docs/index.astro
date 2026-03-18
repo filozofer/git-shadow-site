@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DocsSidebar from '../../components/DocsSidebar.astro';
+---
+
+<BaseLayout title="Documentation" description="Git Shadow documentation — Shadow Branch Pattern, getting started, and commands reference.">
+  <div class="docs-layout">
+    <DocsSidebar currentSlug="" />
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1>Documentation</h1>
+        <p>
+          Git Shadow is a CLI toolkit implementing the <strong>Shadow Branch Pattern</strong> —
+          a Git workflow that separates your local thinking layer from your collaboration layer.
+        </p>
+        <h2>Where to start</h2>
+        <ul>
+          <li><a href="/docs/getting-started">Getting Started</a> — install and run your first command in minutes</li>
+          <li><a href="/docs/concept/shadow-branch-pattern">Shadow Branch Pattern</a> — understand the concept behind the tool</li>
+          <li><a href="/docs/concept/ai-memory-layer">Git Shadow as AI Memory Layer</a> — how git-shadow enables persistent AI cognition</li>
+        </ul>
+        <h2>Commands reference</h2>
+        <ul>
+          <li><a href="/docs/commands/new-feature">new-feature</a></li>
+          <li><a href="/docs/commands/commit">commit</a></li>
+          <li><a href="/docs/commands/publish">publish</a></li>
+          <li><a href="/docs/commands/finish-feature">finish-feature</a></li>
+          <li><a href="/docs/commands/install-hook">install-hook</a></li>
+          <li><a href="/docs/commands/doctor">doctor</a></li>
+        </ul>
+      </article>
+    </main>
+  </div>
+</BaseLayout>
