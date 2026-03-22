@@ -7,21 +7,24 @@ sidebar:
 category: concept
 ---
 
-> Git Shadow allows developers to observe, shape, and version the evolving memory of AI working on their codebase.
+# The Hidden Problem of AI-Assisted Development
 
-## The hidden problem of AI-assisted development
-
-Modern AI tools dramatically increase developer productivity. However, they introduce a new and largely unsolved problem:
+Modern AI tools dramatically increase developer productivity.
+However, they introduce a new and largely unsolved problem:
 
 > **AI systems have no reliable, persistent, and controllable memory of a project.**
 
-Today, developers repeatedly face the same cycle:
-
-```
+Today, developers repeatedly face the same issue:
 conversation → useful insight → context lost → frustration
-```
 
-To compensate, developers resort to increasingly long prompts, copy-pasting project context, ad-hoc README notes, or experimental local memory systems. All of these approaches share the same limitations:
+To compensate, developers resort to:
+- increasingly long prompts
+- copy-pasting project context
+- ad-hoc README notes
+- experimental local memory systems
+- opaque IDE agent memory
+
+All of these approaches share the same limitations:
 
 | Problem | Consequence |
 |---|---|
@@ -32,139 +35,181 @@ To compensate, developers resort to increasingly long prompts, copy-pasting proj
 
 What is missing is a **developer-controlled memory layer**.
 
-## The @local branch as a cognitive workspace
+---
 
-Git Shadow introduces a simple but powerful concept: thinking code ≠ collaboration code.
+# Git Shadow: A Transparent Memory Layer for AI
 
-Originally designed to separate exploratory code from publishable code, this same mechanism naturally supports **AI project memory**.
+Git Shadow introduces a simple but powerful concept:
+thinking code ≠ collaboration code
+
+Originally designed to separate exploratory code from publishable code,
+this same mechanism can naturally support **AI project memory**.
 
 Git Shadow creates two parallel workspaces:
+feature/x@local → exploration + AI cognition layer
+feature/x → clean collaboration branch
 
-```
-feature/x@local   →   exploration + AI cognition layer
-feature/x         →   clean collaboration branch
-```
+The `@local` branch becomes a **shared cognitive workspace** between the developer and the AI.
 
-The `@local` branch becomes a **shared cognitive workspace** between the developer and the AI. Within this branch, the AI can persist its understanding directly in the codebase — architecture assumptions, domain rules, codebase shortcuts, inferred conventions.
+---
 
-Crucially, these annotations never reach the public branch.
+# The AI Memory Problem
 
-## Versioned AI memory
+When AI assists with development, it builds an implicit internal understanding of the project:
 
-One of the most powerful properties is **versioned cognition**.
+- architecture assumptions
+- domain rules
+- shortcuts about the codebase
+- inferred conventions
+- hypotheses about how things work
 
-Example evolution in `@local` commit history:
+But today this understanding is:
+
+- hidden
+- temporary
+- difficult to correct
+- impossible to version
+
+This creates a **black box cognition problem**.
+
+AI = powerful but opaque collaborator
+
+Git Shadow transforms this relationship.
+
+---
+
+# Making AI Cognition Visible
+
+Within the `@local` shadow branch, the AI can persist its understanding directly in the codebase.
+
+This information:
+- helps the AI reason in future iterations
+- provides shortcuts for the developer
+- documents the evolving understanding of the system
+
+Crucially, these annotations never leak into the public branch.
+
+# Versioned AI Memory
+
+One of the most powerful properties of Git Shadow is versioned cognition.
+
+Example evolution:
 
 - commit A → AI initial understanding of authentication flow
 - commit B → corrected domain assumption
 - commit C → refined mental model of permission system
 
-This allows developers to observe how the AI's understanding evolves, where mistakes appeared, and how the mental model improved. Traditional AI tooling does not provide this capability.
+This allows developers to observe:
 
-## Inspectable reasoning
+- how the AI's understanding evolves
+- where mistakes appeared
+- how the mental model improved
 
-Most AI tools behave like black boxes:
+Traditional AI tooling does not provide this capability.
 
-```
+# Inspectable AI Reasoning
+
+Most AI tools today behave like black boxes:
 input → output
-```
 
 Git Shadow enables something different:
-
-```
 AI reasoning → recorded → visible → reviewable
-```
 
-Developers can inspect what the AI considered important, which shortcuts it created, how it interprets the architecture. This creates a transparent collaboration loop.
+Developers can inspect:
+- what the AI considered important
+- which shortcuts it created
+- how it interprets the architecture
 
-## Editable memory
+This creates a transparent collaboration loop.
 
-Developers can directly refine the AI's knowledge by editing the `@local` branch. This transforms the relationship:
+# Editable AI Memory
 
-```
+Developers can directly refine the AI's knowledge.
+
+This transforms the relationship between developer and AI:
 AI assistant → AI apprentice
-```
 
-The developer becomes the editor of the AI's memory — correcting misunderstandings, adding domain context, removing stale assumptions.
+The developer becomes the editor of the AI's memory.
 
-## Memory aligned with the codebase
+# Memory Aligned with the Codebase
 
-Unlike external documentation or knowledge bases, Git Shadow memory lives next to the code it describes.
+Unlike external documentation or knowledge bases, Git Shadow memory can lives next to the code it describes.
 
-- **Contextual** — knowledge is co-located with the code it applies to
-- **Easy to maintain** — no separate system to update
-- **Automatically versioned** — Git handles the history
-- **Tightly coupled** — memory evolves alongside the project
+Advantages:
+- contextual
+- easy to maintain
+- automatically versioned
+- tightly coupled to the project history
 
-The AI works with explicit, developer-readable knowledge — not opaque vector embeddings.
+The AI does not rely on external vector databases or opaque embeddings.
+Instead, it works with explicit developer-readable knowledge.
 
-## Why not vector databases?
+# Why Not Use Vector Databases?
 
-Vector stores are frequently used to add memory to AI systems, but they introduce trade-offs:
+Vector stores are frequently used to add memory to AI systems, but they introduce tradeoffs:
 
-| Vector memory | Git Shadow memory |
+| Vector Memory	| Git Shadow Memory |
 |---|---|
-| Opaque | Readable |
-| Difficult to edit | Directly editable |
-| Hard to version | Git-versioned |
-| Hidden reasoning | Explicit cognition |
+| opaque | readable |
+| difficult to edit | easily editable |
+| hard to version | Git versioned |
+| hidden reasoning | explicit cognition |
 
 Git Shadow prioritizes human-readable knowledge.
 
-## Why not IDE memory?
+# Why Not Use IDE Memory?
 
-Modern IDE agents often maintain internal context (Cursor, Copilot Chat, JetBrains AI). However this memory is typically proprietary, hidden from the developer, not portable across tools, and not version-controlled.
+Modern IDE agents often maintain internal context:
+- Cursor
+- Copilot Chat
+- JetBrains AI
 
-Git Shadow provides open memory, portable knowledge, and developer-controlled cognition.
+However this memory is typically:
+- proprietary
+- hidden from the developer
+- not portable across tools
+- not version-controlled
 
-## A practical example
+Git Shadow provides:
+- open memory
+- portable knowledge
+- developer-controlled cognition
 
-Here's what this looks like on a real feature. The developer is building an authentication module with an AI assistant (Claude, Cursor, Copilot, etc.).
+# A Cognitive Workspace for Human + AI Collaboration
 
-**On `feature/auth@local`, the file looks like this:**
+With Git Shadow, the @local branch becomes a **shared thinking space**.
 
-```typescript
-/// ARCHITECTURE NOTE (for AI): This service is the single entry point for auth.
-/// The session store is Redis — see config/redis.ts for connection details.
-/// Known constraint: tokens must be invalidated on password change (see issue #142).
-/// AI context: the team prefers throwing typed errors over returning error codes.
-
-export async function login(email: string, password: string): Promise<Session> {
-  /// Step 1: fetch user — email is unique, findUnique is correct here
-  const user = await prisma.user.findUnique({ where: { email } })
-  if (!user) throw new AuthError('INVALID_CREDENTIALS')
-
-  /// Step 2: bcrypt compare — intentionally constant-time
-  const valid = await bcrypt.compare(password, user.passwordHash)
-  if (!valid) throw new AuthError('INVALID_CREDENTIALS')
-
-  /// Step 3: create session with 30-day TTL (product decision, not a bug)
-  return sessionStore.create({ userId: user.id, ttl: 30 * 24 * 3600 })
-}
+```
+Human ideas
+AI observations
+Architecture notes
+Exploration code
+Hypotheses
+Temporary experiments
 ```
 
-**On `feature/auth` (the published branch), the same file:**
+All of this can live safely inside the project.
 
-```typescript
-export async function login(email: string, password: string): Promise<Session> {
-  const user = await prisma.user.findUnique({ where: { email } })
-  if (!user) throw new AuthError('INVALID_CREDENTIALS')
+And when it's time to publish:
 
-  const valid = await bcrypt.compare(password, user.passwordHash)
-  if (!valid) throw new AuthError('INVALID_CREDENTIALS')
-
-  return sessionStore.create({ userId: user.id, ttl: 30 * 24 * 3600 })
-}
+```bash
+git shadow feature publish
 ```
 
-The `@local` branch carries:
-- **Architecture context** the AI needs to not make incorrect assumptions
-- **Decision notes** explaining non-obvious choices (constant-time comparison, 30-day TTL)
-- **Cross-references** to issues and config files the AI should know about
+Only the clean code reaches the public branch.
 
-These annotations are committed as `[MEMORY]` commits or as the comment layer of regular commits. When you open the file with your AI tool, the context is already there — you don't re-explain the session store, the error convention, or the known constraints. The AI picks them up from the file.
+# Rethinking the Role of Git Shadow
 
-## The future of AI collaboration
+Git Shadow is not merely a Git workflow tool.
+
+It can be understood as a local cognitive layer for AI-assisted development
+
+It allows developers to:
+- externalize the AI's evolving understanding
+- review and correct its reasoning
+- build a durable project memory
+
+# The Future of AI Collaboration
 
 As AI-assisted development becomes standard practice, a new question emerges:
 
@@ -179,4 +224,11 @@ versioned
 controlled by the developer
 ```
 
-Not hidden in prompts. Not locked inside proprietary agents. Open, inspectable, and evolvable.
+Not hidden in prompts.
+Not locked inside proprietary agents.
+
+But open, inspectable, and evolvable.
+
+# In One Sentence
+
+Git Shadow allows developers to observe, shape, and version the evolving memory of AI working on their codebase.
