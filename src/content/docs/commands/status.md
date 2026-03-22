@@ -3,7 +3,7 @@ title: status
 description: Display the current git shadow state of the branch pair — pending commits, sync state, and next recommended step.
 sidebar:
   label: status
-  order: 6
+  order: 7
 category: commands
 ---
 

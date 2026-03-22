@@ -11,11 +11,11 @@ const allDocs = await getCollection('docs');
 
 // Group and sort docs by category then order
 const categories = [
-  { key: 'getting-started', label: 'Getting Started' },
-  { key: 'concept', label: 'Concept' },
-  { key: 'commands', label: 'Commands' },
-  { key: 'faq', label: 'FAQ' },
-  { key: 'troubleshooting', label: 'Troubleshooting' },
+  { key: 'getting-started', label: '🚀 Getting Started' },
+  { key: 'concept', label: '💡 Concept' },
+  { key: 'commands', label: '⌨️ Commands' },
+  { key: 'faq', label: '❓ FAQ' },
+  { key: 'troubleshooting', label: '🔧 Troubleshooting' },
 ] as const;
 
 const grouped = categories.map(({ key, label }) => ({
@@ -33,7 +33,7 @@ const grouped = categories.map(({ key, label }) => ({
 
 <nav class="docs-sidebar" aria-label="Documentation navigation">
   <a href="/" class="sidebar-logo">
-    <img src="/logo-on-dark.svg" alt="git shadow" class="sidebar-logo-img" />
+    <img src="/git-shadow-logo.svg" alt="git shadow" class="sidebar-logo-img" />
   </a>
   {grouped.map(({ label, items }) => items.length > 0 && (
     <div class="sidebar-group">

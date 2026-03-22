@@ -3,7 +3,7 @@ title: version
 description: Print the currently installed version of git shadow.
 sidebar:
   label: version
-  order: 10
+  order: 11
 category: commands
 ---
 
@@ -18,7 +18,7 @@ git shadow version
 ## Example output
 
 ```
-1.0.3
+1.0.4
 ```
 
 ## When to use it

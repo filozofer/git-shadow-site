@@ -3,7 +3,7 @@ title: doctor
 description: Check your git shadow installation and current repository status.
 sidebar:
   label: doctor
-  order: 9
+  order: 10
 category: commands
 ---
 

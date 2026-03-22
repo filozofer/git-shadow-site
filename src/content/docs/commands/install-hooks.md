@@ -3,7 +3,7 @@ title: install-hooks
 description: Install the pre-commit and pre-push hooks that protect shadow branch integrity.
 sidebar:
   label: install-hooks
-  order: 5
+  order: 6
 category: commands
 ---
 

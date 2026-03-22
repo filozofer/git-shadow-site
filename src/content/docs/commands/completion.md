@@ -3,7 +3,7 @@ title: completion install
 description: Install shell tab completion for git shadow commands.
 sidebar:
   label: completion install
-  order: 8
+  order: 9
 category: commands
 ---
 

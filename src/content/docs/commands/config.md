@@ -3,7 +3,7 @@ title: config
 description: Read and write git shadow configuration values across project and user scopes.
 sidebar:
   label: config
-  order: 7
+  order: 8
 category: commands
 ---
 
