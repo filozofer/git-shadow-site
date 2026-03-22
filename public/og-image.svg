@@ -1,0 +1,46 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0b"/>
+
+  <!--
+    Logo centered: original viewBox "55 28 312 66"
+    Target logo width: 620px → scale = 620/312 ≈ 1.987
+    Center at (600, 315): translate(600 - 310, 315 - 66) = translate(290, 249)
+    Then scale(1.987) then shift by viewBox origin translate(-55, -28)
+    Full transform: translate(290,249) scale(1.987) translate(-55,-28)
+  -->
+  <g transform="translate(290,249) scale(1.987) translate(-55,-28)">
+    <g transform="translate(23,-3)">
+
+      <!-- Shadow layer (purple, offset +6,+6) -->
+      <g transform="translate(6,6)" stroke="#7C3AED" stroke-width="6"
+         stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+        <line x1="40" y1="80" x2="80" y2="40"/>
+        <line x1="80" y1="40" x2="120" y2="40"/>
+        <circle cx="40" cy="80" r="6" fill="#7C3AED"/>
+        <circle cx="80" cy="40" r="6" fill="#7C3AED"/>
+        <circle cx="120" cy="40" r="6" fill="#7C3AED"/>
+      </g>
+
+      <!-- Main layer (green) -->
+      <g stroke="#10B981" stroke-width="6"
+         stroke-linecap="round" stroke-linejoin="round">
+        <line x1="40" y1="80" x2="80" y2="40"/>
+        <line x1="80" y1="40" x2="120" y2="40"/>
+        <circle cx="40" cy="80" r="6" fill="#10B981"/>
+        <circle cx="80" cy="40" r="6" fill="#10B981"/>
+        <circle cx="120" cy="40" r="6" fill="#10B981"/>
+      </g>
+
+      <!-- Text -->
+      <text x="150" y="72"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="36" font-weight="700"
+            fill="#10B981">git</text>
+      <text x="210" y="72"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="36" font-weight="500"
+            fill="#7C3AED">shadow</text>
+    </g>
+  </g>
+</svg>
