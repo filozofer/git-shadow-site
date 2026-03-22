@@ -29,6 +29,12 @@ If `~/.local/bin` is not in your PATH, add it to your shell profile:
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
+### npm (requires Node ≥ 14)
+
+```bash
+npm install -g git-shadow
+```
+
 ### Manual clone
 
 ```bash
