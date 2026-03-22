@@ -180,6 +180,10 @@ pre code {
   color: color-mix(in srgb, var(--color-text) 85%, transparent);
 }
 
+.docs-content ul {
+  list-style: circle;
+}
+
 .docs-content li {
   margin-bottom: 0.35rem;
 }
