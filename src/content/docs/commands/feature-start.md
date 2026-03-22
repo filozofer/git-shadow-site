@@ -36,7 +36,7 @@ Then switches your working directory to `feature/user-login@local`.
 2. Creates the `@local` shadow branch from the local base branch (e.g. `main@local`)
 3. Switches to the `@local` branch so you can start working immediately
 
-If the local base branch (e.g. `main@local`) does not exist, git-shadow falls back to using the public base branch as the starting point and informs you.
+If the local base branch (e.g. `main@local`) does not exist, git shadow falls back to using the public base branch as the starting point and informs you.
 
 ## After running this command
 

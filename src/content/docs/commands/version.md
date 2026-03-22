@@ -1,13 +1,13 @@
 ---
 title: version
-description: Print the currently installed version of git-shadow.
+description: Print the currently installed version of git shadow.
 sidebar:
   label: version
   order: 10
 category: commands
 ---
 
-Print the currently installed version of git-shadow.
+Print the currently installed version of git shadow.
 
 ## Usage
 

@@ -1,13 +1,13 @@
 ---
 title: doctor
-description: Check your git-shadow installation and current repository status.
+description: Check your git shadow installation and current repository status.
 sidebar:
   label: doctor
   order: 9
 category: commands
 ---
 
-Run a health check on your git-shadow installation and the current repository. Useful after initial setup or when something doesn't seem to be working.
+Run a health check on your git shadow installation and the current repository. Useful after initial setup or when something doesn't seem to be working.
 
 ## Usage
 
@@ -20,7 +20,7 @@ git shadow doctor
 1. All required toolkit files are present (`commands/feature/start.sh`, `commands/feature/publish.sh`, `commands/feature/finish.sh`, `commands/commit.sh`, `commands/install-hooks.sh`, and core scripts)
 2. `config/defaults.env` is valid and contains the required keys
 3. `git` is available in your PATH
-4. `git-shadow` CLI is reachable (PATH or alias configured)
+4. `git shadow` CLI is reachable (PATH or alias configured)
 5. Current repository status (clean working tree, staged files, current branch)
 
 ## Example output

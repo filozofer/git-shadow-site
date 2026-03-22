@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Install git-shadow and run your first command in minutes.
+description: Install git shadow and run your first command in minutes.
 sidebar:
   order: 1
 category: getting-started
@@ -77,7 +77,7 @@ Use `git shadow config list` to see all available keys.
 
 ## 3. Install the hooks
 
-Run this from inside the repository where you want to use git-shadow:
+Run this from inside the repository where you want to use git shadow:
 
 ```bash
 git shadow install-hooks
@@ -88,7 +88,7 @@ This installs two hooks:
 - **pre-commit** — prevents accidentally committing local comments on any branch
 - **pre-push** — blocks pushing `@local` shadow branches to a remote
 
-Both hooks are non-breaking for teammates who haven't installed git-shadow.
+Both hooks are non-breaking for teammates who haven't installed git shadow.
 
 ## 4. Install shell completion (optional)
 
@@ -149,4 +149,4 @@ rm -rf ~/.local/share/git-shadow
 # Fish: rm ~/.config/fish/completions/git-shadow.fish
 ```
 
-Hooks installed in your repositories (`pre-commit`, `pre-push`) are not removed automatically — delete them manually if needed, or leave them in place (they exit silently when git-shadow is not found).
+Hooks installed in your repositories (`pre-commit`, `pre-push`) are not removed automatically — delete them manually if needed, or leave them in place (they exit silently when git shadow is not found).

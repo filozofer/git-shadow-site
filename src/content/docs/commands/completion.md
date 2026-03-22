@@ -1,13 +1,13 @@
 ---
 title: completion install
-description: Install shell tab completion for git-shadow commands.
+description: Install shell tab completion for git shadow commands.
 sidebar:
   label: completion install
   order: 8
 category: commands
 ---
 
-Install tab completion for git-shadow in your shell. Once installed, pressing `<Tab>` after `git shadow` will suggest available commands and subcommands.
+Install tab completion for git shadow in your shell. Once installed, pressing `<Tab>` after `git shadow` will suggest available commands and subcommands.
 
 ## Usage
 
@@ -51,7 +51,7 @@ Fish: ln -sf ~/.local/share/git-shadow/completions/git-shadow.fish ~/.config/fis
 
 ## Note
 
-If you installed git-shadow via the curl installer, completion is set up automatically during installation. You only need to run this command if you installed manually.
+If you installed git shadow via the curl installer, completion is set up automatically during installation. You only need to run this command if you installed manually.
 
 ## Related
 

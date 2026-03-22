@@ -85,12 +85,14 @@ pre code {
 
 .sidebar-logo {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text);
   margin-bottom: 2rem;
   text-decoration: none;
+}
+
+.sidebar-logo-img {
+  height: 20px;
+  width: auto;
+  display: block;
 }
 
 .sidebar-group {

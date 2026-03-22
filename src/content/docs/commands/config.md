@@ -1,13 +1,13 @@
 ---
 title: config
-description: Read and write git-shadow configuration values across project and user scopes.
+description: Read and write git shadow configuration values across project and user scopes.
 sidebar:
   label: config
   order: 7
 category: commands
 ---
 
-Inspect and modify git-shadow configuration. Configuration is loaded from three tiers — built-in defaults, user-level, and project-level. The `config` command lets you view and update values at any tier.
+Inspect and modify git shadow configuration. Configuration is loaded from three tiers — built-in defaults, user-level, and project-level. The `config` command lets you view and update values at any tier.
 
 ## Subcommands
 

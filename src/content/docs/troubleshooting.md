@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Recovery steps for the most common situations where git-shadow operations go wrong.
+description: Recovery steps for the most common situations where git shadow operations go wrong.
 sidebar:
   label: Troubleshooting
   order: 1
@@ -268,7 +268,7 @@ LOCAL_COMMENT_PATTERN='^[[:space:]]*(//!|##!)'
 
 ---
 
-## Removing git-shadow hooks from a project
+## Removing git shadow hooks from a project
 
 **Identify the hook location:**
 
@@ -296,7 +296,7 @@ git push --no-verify
 
 ---
 
-## Adopting git-shadow on an existing repository
+## Adopting git shadow on an existing repository
 
 **Scenario:** You have an existing feature branch and want to start using the shadow branch pattern without losing your work.
 

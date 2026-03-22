@@ -1,13 +1,13 @@
 ---
 title: status
-description: Display the current git-shadow state of the branch pair — pending commits, sync state, and next recommended step.
+description: Display the current git shadow state of the branch pair — pending commits, sync state, and next recommended step.
 sidebar:
   label: status
   order: 6
 category: commands
 ---
 
-Display a summary of the current git-shadow state for the active branch pair. Works from either a shadow or a public branch.
+Display a summary of the current git shadow state for the active branch pair. Works from either a shadow or a public branch.
 
 ## Usage
 

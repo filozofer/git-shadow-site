@@ -10,7 +10,7 @@ const currentPath = Astro.url.pathname;
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="header-logo">
-      <span class="logo-text">git-shadow</span>
+      <img src="/logo-on-dark.svg" alt="git shadow" class="logo-img" />
     </a>
     <nav class="header-nav" aria-label="Main navigation">
       {navLinks.map(({ label, href, external }) => (
@@ -49,14 +49,14 @@ const currentPath = Astro.url.pathname;
 
   .header-logo {
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 
-  .logo-text {
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-text);
-    letter-spacing: -0.02em;
+  .logo-img {
+    height: 24px;
+    width: auto;
+    display: block;
   }
 
   .header-nav {

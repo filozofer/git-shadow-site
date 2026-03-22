@@ -15,7 +15,7 @@ Install two Git hooks in the current repository to enforce shadow branch discipl
 git shadow install-hooks
 ```
 
-Run this from inside the repository where you want to use git-shadow.
+Run this from inside the repository where you want to use git shadow.
 
 ## What it installs
 
@@ -45,13 +45,13 @@ GIT_SHADOW_ALLOW_LOCAL_PUSH=true git push
 
 ## Safe for teammates
 
-Both hooks are non-breaking for developers who haven't installed git-shadow. If git-shadow is not found on the machine, the hooks exit silently without producing errors.
+Both hooks are non-breaking for developers who haven't installed git shadow. If git shadow is not found on the machine, the hooks exit silently without producing errors.
 
 ## Husky and custom hook paths
 
 `install-hooks` respects `core.hooksPath`. If your project uses Husky or another hook manager with a custom hooks directory, the scripts are installed in the correct location automatically.
 
-If a hook file already exists, the git-shadow hook content is appended rather than replacing the existing file.
+If a hook file already exists, the git shadow hook content is appended rather than replacing the existing file.
 
 ## Related
 

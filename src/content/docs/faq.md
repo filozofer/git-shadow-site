@@ -1,20 +1,20 @@
 ---
 title: FAQ
-description: Frequently asked questions about git-shadow and the Shadow Branch Pattern.
+description: Frequently asked questions about git shadow and the Shadow Branch Pattern.
 sidebar:
   order: 1
 category: faq
 ---
 
-## Does git-shadow work with GitHub, GitLab, and Bitbucket?
+## Does git shadow work with GitHub, GitLab, and Bitbucket?
 
 Yes. Git Shadow only operates on local branches. Your public branch (`feature/login`) behaves exactly like a normal branch — you push it, open a PR/MR, and merge it as usual. The hosting platform is unaware of the shadow branch.
 
-## Does my whole team need to install git-shadow?
+## Does my whole team need to install git shadow?
 
 No. Git Shadow is a personal workflow tool. You can adopt it individually on your machine without requiring your teammates to do anything.
 
-The pre-commit and pre-push hooks are designed to be non-breaking: if a teammate doesn't have git-shadow installed, they exit safely without producing errors.
+The pre-commit and pre-push hooks are designed to be non-breaking: if a teammate doesn't have git shadow installed, they exit safely without producing errors.
 
 ## What happens if I do a plain `git push` from my `@local` branch?
 
@@ -47,7 +47,7 @@ LOCAL_COMMENT_PATTERN='^[[:space:]]*(##)'
 
 The default pattern supports: `///`, `##`, `%%`, and `<!--`. Note that markers must not conflict with standard syntax — `;;` (valid bash) and `---` (valid YAML/Markdown) are intentionally excluded from the default.
 
-## Can I use git-shadow on an existing project?
+## Can I use git shadow on an existing project?
 
 Yes. Run `git shadow install-hooks` in any existing Git repository. Then create shadow branches from your existing base:
 
@@ -73,13 +73,13 @@ git shadow commit -m "[MEMORY] AI context for auth module"
 
 The prefix is configurable via `SHADOW_COMMIT_PREFIX` in your config.
 
-## Is git-shadow compatible with rebase-based workflows?
+## Is git shadow compatible with rebase-based workflows?
 
 It works, but with extra care. Rebasing your `@local` branch requires also rebasing the corresponding public branch. The simpler approach is to use merge-based updates (which `feature finish` does by default). If you rebase regularly, test carefully on a non-critical project first.
 
 ## Why not just use `.gitignore` or git stash?
 
-`.gitignore` only works for untracked files, not code-level comments inside tracked files. `git stash` is temporary and has no history. Neither provides a persistent, versioned, searchable local layer that stays synchronized with your feature work. That's the gap git-shadow fills.
+`.gitignore` only works for untracked files, not code-level comments inside tracked files. `git stash` is temporary and has no history. Neither provides a persistent, versioned, searchable local layer that stays synchronized with your feature work. That's the gap git shadow fills.
 
 ## Why not use git worktrees?
 
@@ -93,6 +93,6 @@ Git notes let you attach metadata to commits after the fact. They're not part of
 
 Git Shadow's local comments are first-class code — they live in the file, alongside the function they describe, and are versioned as part of the commit. That's the point: the thinking layer is right next to the code it applies to, not attached as metadata.
 
-## Is git-shadow stable enough for daily use?
+## Is git shadow stable enough for daily use?
 
 Yes — the core workflow (`feature start`, `feature publish`, `feature finish`) is stable and used daily. The tool has reached v1. Check the [GitHub repository](https://github.com/filozofer/git-shadow) for the current version.
