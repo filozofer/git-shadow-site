@@ -10,7 +10,7 @@ const docs = defineCollection({
       label: z.string().optional(),
       order: z.number(),
     }),
-    category: z.enum(['getting-started', 'concept', 'commands', 'faq']),
+    category: z.enum(['getting-started', 'concept', 'commands', 'faq', 'troubleshooting']),
     tags: z.array(z.string()).optional(),
   }),
 });

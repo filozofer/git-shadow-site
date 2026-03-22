@@ -7,7 +7,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- ─── Hero ─── -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">Shadow Branch Pattern</div>
+      <div class="hero-badges">
+        <div class="hero-badge">Shadow Branch Pattern</div>
+        <div class="hero-badge hero-badge-version">v1.0 — stable</div>
+      </div>
       <h1 class="hero-title">
         Think in code.<br />Publish clean code.
       </h1>
@@ -26,6 +29,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span class="branch-desc">your thinking layer</span>
         <span class="branch-arrow-spacer"></span>
         <span class="branch-desc">your collaboration layer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Demo ─── -->
+  <section class="section demo-section">
+    <div class="section-inner">
+      <div class="demo-wrapper">
+        <video class="demo-video" autoplay loop muted playsinline>
+          <source src="/demo/demo.mp4" type="video/mp4" />
+          <img src="/demo/demo.gif" alt="git-shadow workflow demo" />
+        </video>
       </div>
     </div>
   </section>
@@ -83,12 +98,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- ─── Workflow ─── -->
   <section class="section">
     <div class="section-inner">
-      <h2 class="section-title">Three commands. Full workflow.</h2>
+      <h2 class="section-title">Full workflow. Four commands.</h2>
       <div class="steps">
         <div class="step">
           <div class="step-number">1</div>
           <div class="step-body">
-            <div class="step-cmd"><code>git shadow new-feature feature/login</code></div>
+            <div class="step-cmd"><code>git shadow feature start feature/login</code></div>
             <p>Creates both <code>feature/login</code> and <code>feature/login@local</code>. Switches you to the local branch.</p>
           </div>
         </div>
@@ -102,8 +117,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="step">
           <div class="step-number">3</div>
           <div class="step-body">
-            <div class="step-cmd"><code>git shadow publish --commit -m "feat(auth): login"</code></div>
+            <div class="step-cmd"><code>git shadow feature publish --commit -m "feat(auth): login"</code></div>
             <p>Strips local comments. Creates clean commits. Cherry-picks to the public branch. Push normally with <code>git push</code>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-body">
+            <div class="step-cmd"><code>git shadow feature finish</code></div>
+            <p>After the PR is merged — syncs your shadow base branch, merges your local feature history into it, and cleans up the feature branches.</p>
           </div>
         </div>
       </div>
@@ -227,6 +249,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto;
   }
 
+  .hero-badges {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+  }
+
   .hero-badge {
     display: inline-block;
     font-size: 0.75rem;
@@ -238,7 +268,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: color-mix(in srgb, var(--color-accent) 8%, transparent);
     padding: 0.3rem 0.85rem;
     border-radius: 999px;
-    margin-bottom: 1.75rem;
+  }
+
+  .hero-badge-version {
+    color: #4ade80;
+    border-color: color-mix(in srgb, #22c55e 40%, transparent);
+    background: color-mix(in srgb, #22c55e 8%, transparent);
   }
 
   .hero-title {
@@ -408,6 +443,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-top: 1.5rem;
     font-size: 0.9rem;
     color: var(--color-accent);
+  }
+
+  /* ─── Demo ─── */
+  .demo-section {
+    padding-top: 0;
+    padding-bottom: 4rem;
+  }
+
+  .demo-wrapper {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px color-mix(in srgb, var(--color-accent) 6%, transparent);
+  }
+
+  .demo-video {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   /* ─── Problem split ─── */

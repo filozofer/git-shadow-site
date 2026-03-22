@@ -40,8 +40,8 @@ feature/login@local   → shadow branch
 Typical base branches:
 
 ```
-develop               → public base branch
-develop@local         → shadow base branch
+main               → public base branch
+main@local         → shadow base branch
 ```
 
 The shadow branch may contain development scaffolding not intended to be shared. The public branch contains only the commits intended for collaboration.
@@ -72,7 +72,7 @@ feature/x@local
 **6.** Merge the shadow feature branch back into the shadow base branch to preserve local reasoning for future work.
 
 ```
-develop@local
+main@local
 ```
 
 ## Benefits
@@ -133,9 +133,9 @@ In all cases, the underlying idea is the same: separate the environment used for
 The CLI tool **git-shadow** implements this workflow and automates all required operations.
 
 ```bash
-git shadow new-feature feature/login
-git shadow publish --commit -m "feat(login): add login flow"
-git shadow finish-feature
+git shadow feature start feature/login
+git shadow feature publish --commit -m "feat(login): add login flow"
+git shadow feature finish
 ```
 
 The tool handles shadow branch creation, comment filtering, commit publication, and branch synchronization.

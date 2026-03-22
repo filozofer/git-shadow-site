@@ -1,8 +1,8 @@
 ---
-title: new-feature
+title: feature start
 description: Create a new feature with its public branch and shadow branch counterpart.
 sidebar:
-  label: new-feature
+  label: feature start
   order: 1
 category: commands
 ---
@@ -12,13 +12,13 @@ Create a new feature. This command creates both the public branch and its `@loca
 ## Usage
 
 ```bash
-git shadow new-feature <branch-name>
+git shadow feature start <branch-name>
 ```
 
 ## Example
 
 ```bash
-git shadow new-feature feature/user-login
+git shadow feature start feature/user-login
 ```
 
 This creates:
@@ -32,9 +32,11 @@ Then switches your working directory to `feature/user-login@local`.
 
 ## What it does
 
-1. Creates the public branch from your configured base branch (default: `develop`)
-2. Creates the `@local` shadow branch from the same base
+1. Creates the public branch from your configured base branch (default: `main`)
+2. Creates the `@local` shadow branch from the local base branch (e.g. `main@local`)
 3. Switches to the `@local` branch so you can start working immediately
+
+If the local base branch (e.g. `main@local`) does not exist, git-shadow falls back to using the public base branch as the starting point and informs you.
 
 ## After running this command
 
@@ -45,11 +47,11 @@ You are on `feature/user-login@local`. Work normally — write code, add `///` c
 # ... edit files, add /// comments ...
 
 # When ready to publish
-git shadow publish --commit -m "feat(auth): user login"
+git shadow feature publish --commit -m "feat(auth): user login"
 ```
 
 ## Related
 
-- [publish](/docs/commands/publish) — publish your work to the public branch
-- [finish-feature](/docs/commands/finish-feature) — clean up after the MR is merged
+- [feature publish](/docs/commands/feature-publish) — publish your work to the public branch
+- [feature finish](/docs/commands/feature-finish) — clean up after the MR is merged
 - [Shadow Branch Pattern](/docs/concept/shadow-branch-pattern) — understand the dual-branch structure
