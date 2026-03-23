@@ -17,6 +17,9 @@ git shadow feature publish
 
 # Commit and publish in one step
 git shadow feature publish --commit -m "your commit message"
+
+# Publish and push the public branch to origin in one step
+git shadow feature publish --commit -m "your commit message" --push
 ```
 
 ## Full workflow example
@@ -38,6 +41,8 @@ git push origin feature/login
 4. Cherry-picks the remaining commits onto the public branch in order
 5. Skips empty cherry-picks (patches already applied) automatically
 6. Stops with an error on conflict — resolve it, then run `git cherry-pick --continue` or `git cherry-pick --abort`
+7. If `--push` is passed, pushes the public branch to `origin`
+8. Always switches back to the originating `@local` shadow branch when done
 
 Your `@local` branch retains the full history including local comments. The public branch receives only clean, reviewable commits.
 
@@ -64,4 +69,5 @@ Your `@local` branch is blocked from being pushed by the pre-push hook — it st
 
 - [commit](/docs/commands/commit) — commit only, without publishing
 - [feature start](/docs/commands/feature-start) — create a new feature with both branches
+- [feature sync](/docs/commands/feature-sync) — rebase shadow branch onto the updated public branch
 - [feature finish](/docs/commands/feature-finish) — clean up after the MR is merged
