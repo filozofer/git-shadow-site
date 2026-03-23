@@ -70,21 +70,41 @@ git shadow feature sync --continue
 
 By default, shadow branches are personal and local. But you can share a shadow branch with teammates by pushing it to the remote (see the FAQ). In that case, **rebase rewrites history** and would break your teammates' local copies — use `--merge` instead.
 
-`--merge` runs `git merge -X theirs <public-branch>`, which:
-- Merges in the public branch commits in a single step
-- Auto-resolves all code conflicts in favour of the public branch
-- Preserves your `[MEMORY]` files (they don't exist on the public branch, so they never conflict)
-- Keeps a linear, push-friendly history
+`--merge` runs `git merge <public-branch>` with smart per-file conflict handling:
+
+| File in conflict | Has local comments (`///`, `##`, …) | Result |
+|---|---|---|
+| Code file | No | Auto-resolved — public branch wins |
+| Code file | Yes | **Paused** — manual resolution required |
+| `[MEMORY]` file (notes, md…) | — | Never conflicts (doesn't exist on public branch) |
+
+This ensures your local annotations are never silently overwritten, while pure code conflicts are handled automatically.
 
 ```bash
 # Shared shadow branch workflow
 git pull origin feature/login@local     # pull teammates' shadow commits
 git pull origin feature/login           # update the public branch locally
-git shadow feature sync --merge         # merge public into shadow, public wins on conflicts
+git shadow feature sync --merge         # merge public into shadow
 git push origin feature/login@local     # share the updated shadow branch
 ```
 
-> **Why does public win on conflicts?** The shadow branch's extra content is your team's thinking layer — local comments, `[MEMORY]` files, notes. The *code* should always match the public branch so the thinking layer stays anchored to the latest reviewed state.
+When a file with local comments conflicts, you'll see:
+
+```
+⚠️  Conflict with local comments: src/auth.ts
+⚠️  Some conflicted files contain local comments — manual resolution required.
+ℹ️  Resolve each file above, stage it with 'git add', then run:
+   git shadow feature sync --continue
+ℹ️  To abort:
+   git shadow feature sync --abort
+```
+
+Resolve each flagged file manually, keeping both the public code changes and your local comments, then:
+
+```bash
+git add src/auth.ts
+git shadow feature sync --continue
+```
 
 ## When to use it
 
