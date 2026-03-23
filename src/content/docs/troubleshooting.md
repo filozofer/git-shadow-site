@@ -175,13 +175,102 @@ git commit --no-verify -m "your message"
 
 ---
 
+## Sync stuck mid-rebase (`feature sync` without `--merge`)
+
+**Symptom:** `feature sync` paused on a `[MEMORY]` commit conflict and you are now in a detached HEAD state.
+
+**Where you are:** `git rev-parse --git-dir)/rebase-merge` exists. HEAD is detached.
+
+**Recovery — resolve and continue:**
+
+```bash
+# 1. Check which files are conflicted
+git status
+
+# 2. Open each conflicted file, resolve the markers, then stage
+git add path/to/file.md
+
+# 3. Resume
+git shadow feature sync --continue
+```
+
+**Recovery — give up and go back:**
+
+```bash
+git shadow feature sync --abort
+```
+
+**The rebase loop never ends (infinite conflicts):** This can happen if a cherry-picked commit was already applied with a different patch ID (e.g. after a prior conflict resolution). Skip the offending commit:
+
+```bash
+git rebase --skip
+# Then resume the sync loop by re-running
+git shadow feature sync --continue
+```
+
+---
+
+## Sync stuck mid-merge (`feature sync --merge`)
+
+**Symptom:** `git merge` left conflict markers and `MERGE_HEAD` is set (this is rare — `--merge` mode uses `-X theirs` which resolves automatically, but binary conflicts or rename conflicts can still require manual attention).
+
+**Where you are:** You are on the shadow branch with `MERGE_HEAD` set.
+
+**Recovery — resolve and continue:**
+
+```bash
+git status
+# Fix conflicted files, then:
+git add path/to/file
+git shadow feature sync --continue
+```
+
+**Recovery — abort:**
+
+```bash
+git shadow feature sync --abort
+```
+
+---
+
+## Shared shadow branch diverged after `feature sync --merge`
+
+**Symptom:** After running `git shadow feature sync --merge` and pushing, a teammate gets `rejected - non-fast-forward`.
+
+**What happened:** The merge created a new merge commit on the shadow branch. Teammates who had already pulled the old tip now have a diverged history.
+
+**Fix — teammates pull with rebase:**
+
+```bash
+git pull --rebase origin feature/login@local
+```
+
+**Fix — force push (only if you are the sole maintainer of the shadow branch at this moment):**
+
+```bash
+git push --force-with-lease origin feature/login@local
+```
+
+> Prefer `--force-with-lease` over `--force` — it refuses to push if someone else pushed in the meantime.
+
+---
+
 ## Public branch is ahead of the shadow branch
 
 **Symptom:** `git shadow status` reports `public branch ahead`.
 
 **What happened:** Commits were added to the public branch (teammate merge, hotfix…) that your shadow branch does not contain.
 
-**Recovery:**
+**Recovery (recommended):**
+
+```bash
+git checkout feature/login@local
+git shadow feature sync          # personal branch: rebase
+# or
+git shadow feature sync --merge  # shared branch: merge
+```
+
+**Manual recovery:**
 
 ```bash
 git checkout feature/login@local

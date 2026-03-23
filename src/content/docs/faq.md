@@ -57,9 +57,36 @@ git shadow feature start feature/my-next-feature
 
 Your existing history is unaffected.
 
+## Can I share my shadow branch with teammates?
+
+Yes. By default shadow branches are personal and blocked from being pushed by the pre-push hook. To allow pushing, set `ALLOW_LOCAL_PUSH=true` in your `.git-shadow.env`:
+
+```bash
+ALLOW_LOCAL_PUSH=true
+```
+
+Once pushed, teammates can pull the shadow branch and work on it together. The key difference from a personal shadow branch is that you **cannot rebase** a shared branch (rebasing rewrites history and breaks everyone else's copy). Use `--merge` instead when syncing:
+
+```bash
+git shadow feature sync --merge
+```
+
+This merges the public branch into the shadow branch with all code conflicts auto-resolved in favour of the public branch. Your `[MEMORY]` files are always preserved — they don't exist on the public branch and therefore never conflict.
+
+**Typical shared shadow branch workflow:**
+
+```bash
+git pull origin feature/login@local     # get teammates' shadow commits
+git pull origin feature/login           # get the latest public commits
+git shadow feature sync --merge         # merge public into shadow
+git push origin feature/login@local     # share the result
+```
+
 ## How do I handle merge conflicts on `@local`?
 
-Conflicts on `@local` branches are usually limited to your local comments — they don't affect the public branch. Resolve them normally with `git mergetool` or your editor. Because they're typically just comment lines, conflicts are usually straightforward.
+Conflicts on `@local` branches are usually limited to your local comments — they don't affect the public branch. The easiest way is to use `git shadow feature sync`, which auto-resolves code conflicts in favour of the public branch and only pauses for `[MEMORY]` commits.
+
+For manual resolution: open the conflicting files, resolve the markers, then continue with `git shadow feature sync --continue`.
 
 ## Can I have commits that never reach the public branch?
 
