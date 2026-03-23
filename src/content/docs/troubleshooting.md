@@ -109,36 +109,6 @@ git log --oneline --graph main main@local feature/login@local
 
 ---
 
-## Nothing left to commit after `git shadow commit`
-
-**Symptom:**
-
-```
-❌ After removing local comments, nothing remains to commit.
-```
-
-**What happened:** Every line in your staged files matched `LOCAL_COMMENT_PATTERN`. The index was cleaned but the commit was aborted.
-
-**Where you are:** The staged files are in the index **without** local comments. Your working tree is unchanged.
-
-**Recovery — option A: restore the original staged state**
-
-```bash
-git restore --staged .
-# Files are staged again with local comments
-```
-
-**Recovery — option B: commit directly as a [MEMORY] commit**
-
-```bash
-git add .
-git commit -m "[MEMORY] my local notes" --no-verify
-```
-
-This is the right approach if the staged content was intentionally notes-only (e.g. a memory file for AI context).
-
----
-
 ## Pre-commit hook is blocking a legitimate commit
 
 **Symptom:**

@@ -71,7 +71,11 @@ Once pushed, teammates can pull the shadow branch and work on it together. The k
 git shadow feature sync --merge
 ```
 
-This merges the public branch into the shadow branch with all code conflicts auto-resolved in favour of the public branch. Your `[MEMORY]` files are always preserved — they don't exist on the public branch and therefore never conflict.
+This merges the public branch into the shadow branch with smart per-file conflict handling:
+
+- Files **without local comments** in conflict → public branch wins automatically
+- Files **with local comments** in conflict → paused for manual resolution, so your annotations are never silently overwritten
+- Standalone `[MEMORY]` files (markdown notes, etc.) → always preserved, they don't exist on the public branch and never conflict
 
 **Typical shared shadow branch workflow:**
 
